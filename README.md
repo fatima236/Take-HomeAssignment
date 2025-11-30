@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Take Home Assignment - Dashboard
 
-## Getting Started
+Ce projet est un **dashboard développé avec Next.js** pour gérer des agences et leurs contacts avec authentification Clerk.
 
-First, run the development server:
+---
 
+## Fonctionnalités principales
+
+- Authentification des utilisateurs via Clerk
+- Gestion des agences et des contacts
+- Filtrage et recherche des agences
+- Pagination des agences et contacts
+- Interface responsive simple et claire
+- Limitation quotidienne des consultations des contacts (50 par utilisateur)
+
+---
+
+## Architecture du projet
+
+app/
+├── agencies/ # Pages et composants liés aux agences
+├── api/ # Routes API
+├── contacts/ # Pages et composants pour gérer les contacts
+├── dashboard/ # Composants et pages du dashboard
+├── homePage/ # Page d'accueil et composants associés
+├── Layout/ # Navbar et layout global
+├── sign-in/ # Page de connexion
+├── sign-up/ # Page d'inscription
+├── globals.css # Styles globaux
+├── layout.tsx # Layout principal
+└── page.tsx # Page principale
+data/ # Fichiers CSV ou données statiques
+
+markdown
+Copier le code
+
+- **Layout** : Navbar et structure générale du site
+- **Components** : Composants réutilisables pour les pages
+- **Pages** : `app/*/page.tsx` pour chaque section
+- **Data** : fichiers CSV pour agences et contacts
+
+---
+
+## Stack technique
+
+- **Framework** : Next.js
+- **Auth** : Clerk
+- **UI** : TailwindCSS
+- **Données** : fichiers CSV (agences et contacts)
+- **Déploiement** : Vercel ou autre
+
+---
+
+## Installation
+
+1. Cloner le projet :
 ```bash
+git clone https://github.com/fatima236/Take-HomeAssignment.git
+cd Take-HomeAssignment
+Installer les dépendances :
+
+bash
+Copier le code
+npm install
+Configurer les variables d'environnement pour Clerk :
+
+env
+Copier le code
+CLERK_FRONTEND_API=<ton-frontend-api>
+CLERK_API_KEY=<ton-api-key>
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+Lancer le projet :
+
+bash
+Copier le code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Accéder à l'application sur http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Structure des fichiers CSV
+data/agencies.csv : liste des agences
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+data/contacts.csv : liste des contacts avec les colonnes :
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+id, first_name, last_name, email, phone, title
 
-## Learn More
+Améliorations possibles
+Migration des données vers une base de données
 
-To learn more about Next.js, take a look at the following resources:
+Authentification avancée avec rôles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Statistiques graphiques pour les agences
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Optimisation de la pagination et des filtres
